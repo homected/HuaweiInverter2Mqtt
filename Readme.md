@@ -14,7 +14,7 @@ To do this here I will show the necessary configuration to achieve this by means
 
 ## Equipment used
 
-This code is checked with the following hardware list:
+This code is checked with the following hardware:
 
 - [Huawei SUN2000-5KTL-L1](https://solar.huawei.com/en-GB/download?p=%2f-%2fmedia%2fSolar%2fattachment%2fpdf%2feu%2fdatasheet%2fSUN2000-2-6KTL-L1.pdf)
 - [Raspberry Pi](https://www.raspberrypi.org/) 1 Model B
