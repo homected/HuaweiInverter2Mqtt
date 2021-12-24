@@ -1,6 +1,6 @@
 ![huawei logo](logo.png)
 # HuaweiInverter2Mqtt
-A python gateway to publish [Huawei solar inverter](https://solar.huawei.com/) data values to an MQTT broker.
+A python gateway to publish [Huawei](https://solar.huawei.com/) solar inverter data values to an MQTT broker.
 
 ## Credits
 The source code for reading the data values from the solar inverter is based on the code of [ayasystems](https://github.com/ayasystems/Huawei-TCP-Modbus) and this is based on the script of [Pedestre](https://www.dropbox.com/s/9zaa1zexnr6cv60/detalles_modbus-tcp.py?dl=0).
