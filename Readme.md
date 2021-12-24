@@ -8,23 +8,16 @@ The source code for reading the data values from the solar inverter is based on 
 ## Introduction
 I have created my own version of the script to get the data values from the [Huawei](https://solar.huawei.com/) Sun2000 solar inverter to adapt it to my [HomeAssistant](https://www.home-assistant.io/) based home automation system. 
 
-The main idea is to be able to display data of interest from the solar inverter such as consumption and production data, which can be stored in an InfluxDB database and can be plotted in Grafana.
+The main idea is to be able to display data of interest from the solar inverter such as consumption and production data, which can be stored in an [InfluxDB](https://www.influxdata.com/) database and can be plotted in [Grafana](https://grafana.com/).
 
 To do this here I will show the necessary configuration to achieve this by means of a [Raspberry Pi](https://www.raspberrypi.org/) that runs the code in Python and is responsible for sending the data to a MQTT server through which [HomeAssistant](https://www.home-assistant.io/) will be able to access.
 
-## Supported sensors
+## Equipment used
 
-The [Rfxcom](http://www.rfxcom.com) supports several sensors, I had support for all of them in my old xAP project, but for this gateway I only support some of them, here is the list of sensors supported by the [Rfxcom](http://www.rfxcom.com) device and the support of this application:
+This code is checked with the following hardware list:
 
-- [ ] ARC-Tech (KlikOn-KlikOff, ELRO AB600, NEXA and Domia lite)
-- [ ] ATI Remote Wonder
-- [ ] HomeEasy
-- [ ] Ikea-Koppla
-- [x] Oregon scientific ([list](http://www.rfxcom.com/epages/78165469.sf/en_GB/#oregon) of supported sensors)
-- [x] RFXCOM sensors
-- [x] Visonic
-- [ ] X10 RF
-- [x] X10 security
+- [Huawei SUN2000-5KTL-L1](https://solar.huawei.com/en-GB/download?p=%2f-%2fmedia%2fSolar%2fattachment%2fpdf%2feu%2fdatasheet%2fSUN2000-2-6KTL-L1.pdf)
+- [Raspberry Pi](https://www.raspberrypi.org/) 1 Model B
 
 ## Installation
 
@@ -41,7 +34,7 @@ The [Rfxcom](http://www.rfxcom.com) supports several sensors, I had support for 
 
    ```sh
    sudo apt install python3-pip
-   pip3 install pyserial
+   sudo pip install -U pymodbus
    pip3 install paho-mqtt
    ```
  
@@ -50,7 +43,7 @@ The [Rfxcom](http://www.rfxcom.com) supports several sensors, I had support for 
    ```sh
    sudo apt install git
    cd~
-   git clone https://github.com/homected/Rfxcom2Mqtt.git rfxcom2mqtt
+   git clone https://github.com/homected/HuaweiInverter2Mqtt.git huaweiInverter2mqtt
    ```
 
 ## Configuration
@@ -58,8 +51,8 @@ The [Rfxcom](http://www.rfxcom.com) supports several sensors, I had support for 
 1. Set your own configuration parameters editing the program file.
 
    ```sh
-   cd rfxcom2mqtt
-   sudo nano rfxcom2mqtt.py
+   cd huaweiInverter2mqtt
+   sudo nano huaweiInverter2mqtt.py
    ```
 
 	You have to replace the text between quotes with the correct values for your configuration:
