@@ -1,18 +1,16 @@
-![huawei logo](logo.jpg)
+![huawei logo](logo.png)
 # HuaweiInverter2Mqtt
-A python gateway to publish [Rfxcom](http://www.rfxcom.com) inverter data values to an MQTT broker.
+A python gateway to publish [Huawei solar inverter](https://solar.huawei.com/) data values to an MQTT broker.
 
 ## Credits
-The source code for decoding the Rfxcom protocol comes from a very old project I had. I haven't any reference from the origin of the information about the Rfxcom protocol, so I can't give thanks for the author, maybe the author of the document from I base my code its the Rfxcom company itself. In any case if you consider than you can be the author of the Rfxcom protocol information where I based on, please feel free to contact me to add you to the credits.
+The source code for reading the data values from the solar inverter is based on the code of [ayasystems](https://github.com/ayasystems/Huawei-TCP-Modbus) and this is based on the script of [Pedestre](https://www.dropbox.com/s/9zaa1zexnr6cv60/detalles_modbus-tcp.py?dl=0).
 
 ## Introduction
-Several years ago I coded some programs for a protocol called xAP, one of this was a Rfxcom gateway to this protocol because I had a now discontinued Rfxcom device to decode X10RF protocol, [Oregon Scientific](http://global.oregonscientific.com/) and [Visonic](https://www.visonic.com/) sensors. Recently I buyed an [Oregon Scientific LW301 wheather station](https://www.oregonscientificstore.com/c-38-lw301.aspx) with the hope to add it to my home automation system based on [home assistant](https://www.home-assistant.io/). This wheater station has a gateway to sends the sensor data to a web platform that currently not works. I know this before I buyed but the price is good for the sensors it includes. Additionaly I had several [Oregon Scientific](http://global.oregonscientific.com/) temperature with humidity sensors in a box, so I started to think to retrieve my old code done for xAP and create this gateway for the MQTT protocol.
+I have created my own version of the script to get the data values from the [Huawei](https://solar.huawei.com/) Sun2000 solar inverter to adapt it to my [HomeAssistant](https://www.home-assistant.io/) based home automation system. 
 
-If you are interested you can find a detailed list of the [Oregon Scientific](http://global.oregonscientific.com/) sensors supported in this [link](http://www.rfxcom.com/epages/78165469.sf/en_GB/#oregon)
+The main idea is to be able to display data of interest from the solar inverter such as consumption and production data, which can be stored in an InfluxDB database and can be plotted in Grafana.
 
-Coming back to my rfxcom device, this model is a box called "Universal Interface version 1", now it is discontinued from [Rfxcom](http://www.rfxcom.com). But for give you some details, it offers only an USB port and a BNC connector for the antenna. Inside, there are one small PCB receiver with support for some 433MHz RF devices and another small PCB receiver for [Visonic](https://www.visonic.com/) 866MHz devices (I bought this PCB apart).
-
-My idea is connect this [Rfxcom](http://www.rfxcom.com) device to a [Raspberry Pi](https://www.raspberrypi.org/) and use this program for publish the sensor information received by the [Rfxcom](http://www.rfxcom.com) device to the MQTT protocol. This program is not limited to the [Raspberry Pi](https://www.raspberrypi.org/) so you can use in other platforms.
+To do this here I will show the necessary configuration to achieve this by means of a [Raspberry Pi](https://www.raspberrypi.org/) that runs the code in Python and is responsible for sending the data to a MQTT server through which [HomeAssistant](https://www.home-assistant.io/) will be able to access.
 
 ## Supported sensors
 
