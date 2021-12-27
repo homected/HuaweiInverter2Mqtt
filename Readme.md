@@ -46,6 +46,18 @@ This code is checked with the following hardware:
    git clone https://github.com/homected/HuaweiInverter2Mqtt.git huaweiInverter2mqtt
    ```
 
+4. Check USB device for Modbus-RTU is detected.
+
+   ```sh
+   usb-devices
+   ```
+
+4. Find serial port for USB device for Modbus-RTU with this command, first without the adapter connected and then with the adapter connected.
+
+   ```sh
+   ls /dev/tty
+   ```
+
 ## Configuration
 
 1. Set your own configuration parameters editing the program file.
